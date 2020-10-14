@@ -8,6 +8,16 @@
 
 import UIKit
 
+// MARK: - First Responder Status
+// when you tap a textfield, it becomes the keyboards first responder
+// to dismiss the keyboard, the text field needs to "resign as first responder"
+// 2 ways to do this
+// 1. user the taps on the background view
+// need a UITapGestureRecognizer to do this
+// 2. user the taps the return key
+// need a UITextFieldDelegate to do this
+
+
 class ViewController: UIViewController {
     
     @IBOutlet var label: UILabel!
@@ -22,6 +32,11 @@ class ViewController: UIViewController {
                 label.text = "Enter text below"
             }
         }
+    }
+    
+    @IBAction func backgroundTapped(_ sender: UITapGestureRecognizer) {
+        print("background tapped")
+        textField.resignFirstResponder()
     }
 
     override func viewDidLoad() {
